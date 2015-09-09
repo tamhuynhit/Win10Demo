@@ -1,0 +1,36 @@
+﻿<Page
+    x:Class="IconDemo.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:IconDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel x:Name="Title" Grid.Row="0">
+                <TextBlock Text="Windows 10 Icon Demo" FontSize="28" FontWeight="Bold"/>
+                <TextBlock Text="By TamHuynhIT" FontSize="20" Margin="0,0,10,0" HorizontalAlignment="Right" />
+            </StackPanel>
+
+            <StackPanel x:Name="Content" Grid.Row="1" Margin="10,20,5,5">
+                <Grid x:Name="FontIconContent">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    
+                    <TextBlock Text="FontIcon : " FontSize="24" FontWeight="SemiBold" />
+                    
+                    
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>
