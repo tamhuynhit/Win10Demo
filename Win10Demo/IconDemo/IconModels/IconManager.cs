@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HtmlAgilityPack;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -10,6 +11,8 @@ namespace IconDemo.IconModels
 {
     public class IconManager : INotifyPropertyChanged
     {
+        public const string Url = "http://modernicons.io/segoe-mdl2/cheatsheet/";
+
         private ObservableCollection<IconInfo> _icons;
         public ObservableCollection<IconInfo> Icons
         {
@@ -22,6 +25,20 @@ namespace IconDemo.IconModels
             {
                 _icons = value;
                 NotifyPropertyChanged("Icons");
+            }
+        }
+
+        public async Task LoadIcons()
+        {
+            HtmlDocument htmlDoc = new HtmlDocument();
+            
+            HtmlNode node = htmlDoc.GetElementbyId("iconList");
+
+            string html = node.InnerHtml;
+            foreach (var child in node.ChildNodes)
+            {
+                string name = child.GetAttributeValue("data-name", null);
+                string hex = child.GetAttributeValue("class", null);
             }
         }
 
