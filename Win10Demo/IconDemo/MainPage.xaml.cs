@@ -6,7 +6,19 @@ namespace IconDemo
 {
     public sealed partial class MainPage : Page
     {
-        private ViewModel PageVM;
+        private ViewModel _pageVM;
+        public ViewModel PageVM
+        {
+            get
+            {
+                return _pageVM;
+            }
+
+            set
+            {
+                _pageVM = value;
+            }
+        }
 
         public MainPage()
         {
@@ -15,9 +27,11 @@ namespace IconDemo
             this.DataContext = PageVM;
         }
 
+        
+
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-            await PageVM.LoadIcons();
+            //await PageVM.LoadIcons();
         }
     }
 }

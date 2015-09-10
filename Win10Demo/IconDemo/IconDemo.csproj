@@ -99,6 +99,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\StringToSymbolConverter.cs" />
     <Compile Include="IconModels\IconInfo.cs" />
     <Compile Include="IconModels\IconManager.cs" />
     <Compile Include="MainPage.xaml.cs">
@@ -114,7 +115,22 @@
     <None Include="IconDemo_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\html.txt" />
+    <Content Include="Assets\html.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\icons.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\add.png" />
+    <Content Include="Assets\Icons\edit.png" />
+    <Content Include="Assets\Icons\camera.png" />
+    <Content Include="Assets\Icons\email.png" />
+    <Content Include="Assets\Icons\search.png" />
+    <Content Include="Assets\Icons\settings.png" />
+    <Content Include="Assets\Icons\refresh.png" />
+    <Content Include="Assets\Icons\save.png" />
+    <Content Include="Assets\Icons\stop.png" />
+    <Content Include="Assets\Icons\play.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

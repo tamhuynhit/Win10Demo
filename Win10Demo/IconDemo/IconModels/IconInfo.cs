@@ -30,7 +30,7 @@ namespace IconDemo.IconModels
 
             set
             {
-                _hexCode = value;
+                _hexCode = value.TrimEnd('\n');
                 NotifyPropertyChanged("HexCode");
             }
         }

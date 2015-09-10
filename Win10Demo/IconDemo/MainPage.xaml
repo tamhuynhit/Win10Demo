@@ -5,9 +5,14 @@
     xmlns:local="using:IconDemo"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converter="using:IconDemo.Converters"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.Resources>
+            <converter:StringToSymbolConverter x:Key="StringToSymbolConverter" />
+        </Grid.Resources>
+        
         <Grid Margin="5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -19,18 +24,127 @@
                 <TextBlock Text="By TamHuynhIT" FontSize="20" Margin="0,0,10,0" HorizontalAlignment="Right" />
             </StackPanel>
 
-            <StackPanel x:Name="Content" Grid.Row="1" Margin="10,20,5,5">
-                <Grid x:Name="FontIconContent">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    
-                    <TextBlock Text="FontIcon : " FontSize="24" FontWeight="SemiBold" />
-                    
-                    
-                </Grid>
-            </StackPanel>
+            <ScrollViewer x:Name="Content" Grid.Row="1" Margin="10,20,5,5">
+                <StackPanel>
+                    <StackPanel x:Name="FontIconContent">
+
+                        <TextBlock Text="FontIcon : " FontSize="24" FontWeight="SemiBold" />
+
+                        <StackPanel Margin="0,10,0,0">
+                            <TextBlock Text="Glyph List is here: " FontSize="16" />
+                            <TextBlock FontSize="16">
+                                <Hyperlink>http://modernicons.io/segoe-mdl2/cheatsheet/</Hyperlink>
+                            </TextBlock>
+                        
+                        </StackPanel>
+
+                        <StackPanel Margin="0,10,0,0">
+                            <TextBlock Text="Mostly used Icons:" FontSize="16" />
+                            <GridView HorizontalAlignment="Center">
+                                <FontIcon Glyph="&#xE700;" FontSize="32"/>
+                                <FontIcon Glyph="&#xE001;" FontSize="32"/>
+                                <FontIcon Glyph="&#xE094;" FontSize="32"/>
+                                <FontIcon Glyph="&#xE104;" FontSize="32"/>
+                                <FontIcon Glyph="&#xE109;" FontSize="32"/>
+                                <FontIcon Glyph="&#xE10F;" FontSize="32"/>
+                                <FontIcon Glyph="&#xE115;" FontSize="32"/>
+                                <FontIcon Glyph="&#xE119;" FontSize="32"/>
+                                <FontIcon Glyph="&#xE1C4;" FontSize="32"/>
+                                <FontIcon Glyph="&#xE1D6;" FontSize="32"/>
+                                <FontIcon Glyph="&#xE00E;" FontSize="32"/>
+                                <FontIcon Glyph="&#xE0A6;" FontSize="32"/>
+                                <FontIcon Glyph="&#xE106;" FontSize="32"/>
+                                <FontIcon Glyph="&#xE107;" FontSize="32"/>
+                                <FontIcon Glyph="&#xE10C;" FontSize="32"/>
+                                <FontIcon Glyph="&#xE10E;" FontSize="32"/>
+                                <FontIcon Glyph="&#xE118;" FontSize="32"/>
+                                <FontIcon Glyph="&#xE13D;" FontSize="32"/>
+                            </GridView>
+                        </StackPanel>
+
+                        <!--<Grid DataContext="{Binding CurrentIcon}" Margin="10,10,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Orientation="Horizontal" Grid.Row="0">
+                                <TextBlock Text="Name code : " FontSize="16" Width="100" />
+                                <TextBlock Text="{Binding Path=Name}" FontSize="20" />
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Grid.Row="1">
+                                <TextBlock Text="Hex code : " FontSize="16" Width="100"/>
+                                <TextBlock Text="{Binding Path=HexCode}" FontSize="20" Width="100"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Grid.Row="2">
+                                <TextBlock Text="Dec code : " FontSize="16" Width="100"/>
+                                <TextBlock Text="{Binding Path=DecCode}" FontSize="20" Width="100"/>
+                            </StackPanel>
+
+                            <FontIcon x:Name="FIcon" Grid.Column="1" Grid.RowSpan="3" Glyph="{Binding Path=HexCode}" />
+                        </Grid>-->
+
+                        <!--<ListView Height="200" ScrollViewer.VerticalScrollBarVisibility="Visible" ItemsSource="{Binding Manager.Icons}" BorderBrush="Black" BorderThickness="1" SelectedItem="{Binding CurrentIcon, Mode=TwoWay}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=Name}" FontSize="16" Foreground="Black" />
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>-->
+                    </StackPanel>
+
+                    <StackPanel x:Name="SymbolIconContent">
+                        <TextBlock Text="SymbolIcon : " FontSize="24" FontWeight="SemiBold" />
+
+                        <StackPanel Margin="0,10,0,0">
+                            <TextBlock Text="Symbol List is here: " FontSize="16" />
+                            <TextBlock FontSize="16">
+                                <Hyperlink>https://msdn.microsoft.com/en-us/library/windows/apps/hh770557.aspx</Hyperlink>
+                            </TextBlock>
+                        </StackPanel>
+
+                        <StackPanel Margin="0,10,0,0">
+                            <TextBlock Text="Symbol List:" FontSize="16" />
+
+                            <GridView HorizontalAlignment="Center" ItemsSource="{Binding Symbols}" Height="200">
+                                <GridView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" Width="150">
+                                            <TextBlock Text="{Binding}" FontSize="16" Width="100" />
+                                            <SymbolIcon Symbol="{Binding Converter={StaticResource StringToSymbolConverter}}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridView.ItemTemplate>
+                            </GridView>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel x:Name="BitmapIconContent">
+                        <TextBlock Text="BitmapIcon : " FontSize="24" FontWeight="SemiBold" />
+
+                        <GridView HorizontalAlignment="Center" Margin="0,10,0,0">
+                            <BitmapIcon UriSource="ms-appx:///Assets/Icons/add.png" Width="80"/>
+                            <BitmapIcon UriSource="ms-appx:///Assets/Icons/camera.png" Width="80"/>
+                            <BitmapIcon UriSource="ms-appx:///Assets/Icons/edit.png" Width="80"/>
+                            <BitmapIcon UriSource="ms-appx:///Assets/Icons/email.png" Width="80"/>
+                            <BitmapIcon UriSource="ms-appx:///Assets/Icons/play.png" Width="80"/>
+                            <BitmapIcon UriSource="ms-appx:///Assets/Icons/refresh.png" Width="80"/>
+                            <BitmapIcon UriSource="ms-appx:///Assets/Icons/save.png" Width="80"/>
+                            <BitmapIcon UriSource="ms-appx:///Assets/Icons/search.png" Width="80"/>
+                            <BitmapIcon UriSource="ms-appx:///Assets/Icons/settings.png" Width="80"/>
+                            <BitmapIcon UriSource="ms-appx:///Assets/Icons/stop.png" Width="80"/>
+                        </GridView>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
         </Grid>
     </Grid>
 </Page>
