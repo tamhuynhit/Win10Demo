@@ -1,37 +1,22 @@
-﻿using IconDemo.ViewModels;
+﻿using System;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
 
 namespace IconDemo
 {
     public sealed partial class MainPage : Page
     {
-        private ViewModel _pageVM;
-        public ViewModel PageVM
+        public string[] Symbols
         {
             get
             {
-                return _pageVM;
-            }
-
-            set
-            {
-                _pageVM = value;
+                return Enum.GetNames(typeof(Symbol));
             }
         }
 
         public MainPage()
         {
             this.InitializeComponent();
-            PageVM = new ViewModel();
-            this.DataContext = PageVM;
-        }
-
-        
-
-        protected async override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            //await PageVM.LoadIcons();
+            this.DataContext = this;
         }
     }
 }
