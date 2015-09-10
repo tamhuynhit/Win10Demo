@@ -35,7 +35,7 @@
                             <TextBlock FontSize="16">
                                 <Hyperlink>http://modernicons.io/segoe-mdl2/cheatsheet/</Hyperlink>
                             </TextBlock>
-                        
+
                         </StackPanel>
 
                         <StackPanel Margin="0,10,0,0">
@@ -61,44 +61,6 @@
                                 <FontIcon Glyph="&#xE13D;" FontSize="32"/>
                             </GridView>
                         </StackPanel>
-
-                        <!--<Grid DataContext="{Binding CurrentIcon}" Margin="10,10,0,0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition />
-                                <RowDefinition />
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-
-                            <StackPanel Orientation="Horizontal" Grid.Row="0">
-                                <TextBlock Text="Name code : " FontSize="16" Width="100" />
-                                <TextBlock Text="{Binding Path=Name}" FontSize="20" />
-                            </StackPanel>
-
-                            <StackPanel Orientation="Horizontal" Grid.Row="1">
-                                <TextBlock Text="Hex code : " FontSize="16" Width="100"/>
-                                <TextBlock Text="{Binding Path=HexCode}" FontSize="20" Width="100"/>
-                            </StackPanel>
-
-                            <StackPanel Orientation="Horizontal" Grid.Row="2">
-                                <TextBlock Text="Dec code : " FontSize="16" Width="100"/>
-                                <TextBlock Text="{Binding Path=DecCode}" FontSize="20" Width="100"/>
-                            </StackPanel>
-
-                            <FontIcon x:Name="FIcon" Grid.Column="1" Grid.RowSpan="3" Glyph="{Binding Path=HexCode}" />
-                        </Grid>-->
-
-                        <!--<ListView Height="200" ScrollViewer.VerticalScrollBarVisibility="Visible" ItemsSource="{Binding Manager.Icons}" BorderBrush="Black" BorderThickness="1" SelectedItem="{Binding CurrentIcon, Mode=TwoWay}">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Path=Name}" FontSize="16" Foreground="Black" />
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>-->
                     </StackPanel>
 
                     <StackPanel x:Name="SymbolIconContent">
@@ -131,7 +93,9 @@
                         <TextBlock Text="BitmapIcon : " FontSize="24" FontWeight="SemiBold" />
 
                         <GridView HorizontalAlignment="Center" Margin="0,10,0,0">
+                            
                             <BitmapIcon UriSource="ms-appx:///Assets/Icons/add.png" Width="80"/>
+                            
                             <BitmapIcon UriSource="ms-appx:///Assets/Icons/camera.png" Width="80"/>
                             <BitmapIcon UriSource="ms-appx:///Assets/Icons/edit.png" Width="80"/>
                             <BitmapIcon UriSource="ms-appx:///Assets/Icons/email.png" Width="80"/>
@@ -143,6 +107,12 @@
                             <BitmapIcon UriSource="ms-appx:///Assets/Icons/stop.png" Width="80"/>
                         </GridView>
                     </StackPanel>
+
+                    <Grid x:Name="IconMergeContent">
+                        <FontIcon Glyph="&#xE00B;" FontSize="128" Foreground="Red"/>
+                        <FontIcon Glyph="&#xE006;" FontSize="128" />
+                        <FontIcon Glyph="&#xE711;" FontSize="64" Margin="0,0,0,10"/>
+                    </Grid>
                 </StackPanel>
             </ScrollViewer>
         </Grid>
