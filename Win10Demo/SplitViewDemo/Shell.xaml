@@ -1,0 +1,104 @@
+﻿<Page
+    x:Class="SplitViewDemo.Shell"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SplitViewDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    
+    <Page.Resources>
+        <SolidColorBrush x:Key="MenuButtonPressedBackgroundBrush" Color="White" Opacity="0.3" />
+        <SolidColorBrush x:Key="MenuButtonCheckedBackgroundBrush" Color="White" Opacity="0.2" />
+        <SolidColorBrush x:Key="MenuButtonHoverBackgroundBrush" Color="White" Opacity="0.1" />
+        
+        <Style x:Key="MenuRadioButtonStyle" TargetType="RadioButton">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseHighBrush}"/>
+            <Setter Property="Padding" Value="8,6,0,0"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Top"/>
+            <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+            <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
+            <Setter Property="MinWidth" Value="30"/>
+            <Setter Property="UseSystemFocusVisuals" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Grid x:Name="BackgroundGrid" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="BackgroundGrid">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource MenuButtonHoverBackgroundBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="BackgroundGrid">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource MenuButtonPressedBackgroundBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled" />
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="CheckStates">
+                                    <VisualState x:Name="Checked">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="BackgroundGrid">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource MenuButtonCheckedBackgroundBrush}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Unchecked"/>
+                                    <VisualState x:Name="Indeterminate"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="48"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <FontIcon Glyph="{TemplateBinding Tag}" Margin="4,4,4,4" FontSize="24" VerticalAlignment="Center"/>
+                            <ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" ContentTemplate="{TemplateBinding ContentTemplate}" ContentTransitions="{TemplateBinding ContentTransitions}" Content="{TemplateBinding Content}" Grid.Column="1" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                            
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Background="Green" Height="40" Orientation="Horizontal">
+            <RadioButton x:Name="BackBtn" Click="BackBtn_Click" Tag="&#xE112;" Width="52" Background="Green" GroupName="Back" Style="{StaticResource MenuRadioButtonStyle}"/>
+            
+            <TextBlock Text="SplitView demo by TamHuynhIT" FontSize="20" Foreground="Black" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <SplitView x:Name="AppMenu" Background="Black" OpenPaneLength="240" CompactPaneLength="52" Grid.Row="1" 
+                DisplayMode="CompactOverlay" IsPaneOpen="False" PaneBackground="Gray" Content="{Binding}">
+            <SplitView.Pane>
+                <StackPanel x:Name="SplitViewPanePanel">
+                    
+                    <RadioButton x:Name="MenuBtn" Click="MenuBtn_Click" Tag="&#xE700;" Content="Menu" GroupName="Menu" Style="{StaticResource MenuRadioButtonStyle}" Width="240" Height="40" FontSize="20"/>
+                    
+                    <RadioButton x:Name="HomeBtn" Click="HomeBtn_Click" Tag="&#xE80F;" Content="Page One" GroupName="PageView" Style="{StaticResource MenuRadioButtonStyle}" Width="240" Height="40" FontSize="20"/>
+                    <RadioButton x:Name="CallBtn" Click="CallBtn_Click" Tag="&#xE13A;" Content="Page Two" GroupName="PageView" Style="{StaticResource MenuRadioButtonStyle}" Width="240" Height="40" FontSize="20"/>
+                    <RadioButton x:Name="ContactBtn" Click="ContactBtn_Click" Tag="&#xE13D;" Content="Page Two" GroupName="PageView" Style="{StaticResource MenuRadioButtonStyle}" Width="240" Height="40" FontSize="20"/>
+                </StackPanel>
+            </SplitView.Pane>
+        </SplitView>
+    </Grid>
+</Page>
