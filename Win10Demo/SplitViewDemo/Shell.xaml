@@ -92,11 +92,15 @@
             <SplitView.Pane>
                 <StackPanel x:Name="SplitViewPanePanel">
                     
-                    <RadioButton x:Name="MenuBtn" Click="MenuBtn_Click" Tag="&#xE700;" Content="Menu" GroupName="Menu" Style="{StaticResource MenuRadioButtonStyle}" Width="240" Height="40" FontSize="20"/>
+                    <RadioButton x:Name="MenuBtn" Click="MenuBtn_Click" Tag="&#xE700;" Content="Menu" GroupName="Menu" 
+                                 Style="{StaticResource MenuRadioButtonStyle}" Width="240" Height="40" FontSize="20"/>
                     
-                    <RadioButton x:Name="HomeBtn" Click="HomeBtn_Click" Tag="&#xE80F;" Content="Page One" GroupName="PageView" Style="{StaticResource MenuRadioButtonStyle}" Width="240" Height="40" FontSize="20"/>
-                    <RadioButton x:Name="CallBtn" Click="CallBtn_Click" Tag="&#xE13A;" Content="Page Two" GroupName="PageView" Style="{StaticResource MenuRadioButtonStyle}" Width="240" Height="40" FontSize="20"/>
-                    <RadioButton x:Name="ContactBtn" Click="ContactBtn_Click" Tag="&#xE13D;" Content="Page Two" GroupName="PageView" Style="{StaticResource MenuRadioButtonStyle}" Width="240" Height="40" FontSize="20"/>
+                    <RadioButton x:Name="HomeBtn" Click="HomeBtn_Click" Tag="&#xE80F;" Content="Home" GroupName="PageView" 
+                                 Style="{StaticResource MenuRadioButtonStyle}" Width="240" Height="40" FontSize="20"/>
+                    <RadioButton x:Name="CallBtn" Click="CallBtn_Click" Tag="&#xE13A;" Content="Call" GroupName="PageView" 
+                                 Style="{StaticResource MenuRadioButtonStyle}" Width="240" Height="40" FontSize="20"/>
+                    <RadioButton x:Name="ContactBtn" Click="ContactBtn_Click" Tag="&#xE13D;" Content="Contact" GroupName="PageView" 
+                                 Style="{StaticResource MenuRadioButtonStyle}" Width="240" Height="40" FontSize="20"/>
                 </StackPanel>
             </SplitView.Pane>
         </SplitView>
